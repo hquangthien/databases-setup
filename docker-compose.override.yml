@@ -1,0 +1,49 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    restart: always
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  mongo:
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/lib
+
+  redis:
+    restart: always
+    ports:
+      - '6379:6379'
+
+  postgres:
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Thien123
+      - POSTGRES_DB=discountdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgressql/data
+
+  mssql:
+    environment:
+      SA_PASSWORD: 'Thien123'
+      ACCEPT_EULA: 'Y'
+    restart: always
+    ports:
+      - '1433:1433'
+
+  mysql:
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Qilin@123'
+    restart: always
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql

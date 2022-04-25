@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+  mongo:
+    image: mongo
+
+  redis:
+    image: redis:alpine
+
+  postgres:
+    image: postgres
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
+  mysql:
+    image: mysql
+
+volumes:
+  mongo_data:
+  portaniner_data:
+  postgres_data:
+  mysql_data:
